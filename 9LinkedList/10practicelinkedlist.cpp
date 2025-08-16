@@ -84,16 +84,35 @@ class linkedlist{
         }
     }
     void deleteattail(){
-        if(size==0) cout<<"size is alerady zero";
+        if(size==0) cout<<"size is already zero";
         else{
             Node* temp= head;
             while(temp->next->next != NULL){
                 temp=temp->next;
                 
             }
+            temp->next=NULL;
             tail=temp;
             size--;
         }
+    }
+    void deleteatanyidx(int idx){
+        
+        if(size==0) cout<<"Not any element present in list";
+        else if(size==1){
+            head=NULL;
+            size--;
+        }
+        else{
+            Node* temp=head;
+            for(int i=1;i<idx-1;i++){
+                temp=temp->next;
+
+            }
+            temp->next=temp->next->next;
+            size--;
+        }
+
     }
 };
 int main(){
@@ -115,5 +134,7 @@ int main(){
     ll.deleteathead();
     ll.display();
     ll.deleteattail();
+    ll.display();
+    ll.deleteatanyidx(3);
     ll.display();
 }
